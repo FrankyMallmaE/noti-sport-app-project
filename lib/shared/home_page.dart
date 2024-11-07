@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notisport_app/features/notices/presentation/widgets/notice_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,13 +12,19 @@ class _HomePageState extends State<HomePage> {
   int _index = 0;
 
   final List<Widget> _pages = const [
-    Text('notice'),
+    NoticeList(),
     Text('favorites'),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('NotiSport'),
+        actions: <Widget>[
+          IconButton(icon: const Icon(Icons.settings), onPressed: () {}),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const [
           BottomNavigationBarItem(

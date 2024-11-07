@@ -7,7 +7,7 @@ import 'package:notisport_app/features/notices/data/remote/notice_dto.dart';
 
 class NoticeService {
   Future<List<NoticeDto>> getNotices() async {
-    String url = '${AppConstants.baseUrl}${AppConstants.topHeadlinesPath}?${AppConstants.countryUS}&${AppConstants.sportsCategory}&${AppConstants.apiKey}';
+    String url = '${AppConstants.baseUrl}${AppConstants.topHeadlinesPath}?${AppConstants.countryUS}&${AppConstants.sportsCategory}&apiKey=${AppConstants.apiKey}';
 
     try {
       http.Response response = await http.get(Uri.parse(url));

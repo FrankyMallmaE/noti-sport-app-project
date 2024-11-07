@@ -21,30 +21,31 @@ class NoticeDto {
       required this.content});
 
   factory NoticeDto.fromJson(Map<String, dynamic> json) {
-    return NoticeDto(
-      id: json['id'] ?? 0,
-      name: json['name'] ?? '',
-      author: json['author'] ?? '',
-      title: json['title'] ?? '',
-      description: json['description'] ?? '',
-      urlToImage: json['urlToImage'] ?? '',
-      publishedAt: json['publishedAt'] ?? 0,
-      content: json['content'] ?? '',
-    );
-  }
+  return NoticeDto(
+    id: 0, 
+    name: '', 
+    author: json['author'] ?? '',
+    title: json['title'] ?? '',
+    description: json['description'] ?? '',
+    urlToImage: json['urlToImage'] ?? '',
+    publishedAt: json['publishedAt'] != null
+        ? DateTime.parse(json['publishedAt'])
+        : DateTime.now(),  
+    content: json['content'] ?? '',
+  );
+}
 
-  // add the union with domain
+
+  
   Notice toNotice() {
-    return Notice(
-      
-      id: id,
-      name: name,
-      author: author,
-      title: title,
-      description: description,
-      urlToImage: urlToImage,
-      publishedAt: publishedAt,
-      content: content,
-    );
-  }
+  return Notice(
+    author: author,
+    title: title,
+    description: description,
+    urlToImage: urlToImage,
+    publishedAt: publishedAt,
+    content: content,
+  );
+}
+
 }
